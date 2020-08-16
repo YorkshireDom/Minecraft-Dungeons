@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Puzzle Solver v1.0</title>
+    <style>
+        .PuzzleContainer {
+            border: 2px solid;
+            border-color: aquamarine;
+            width: 600;
+            height: 300;
+            padding: 2%;
+        }
+
+    </style>
+</head>
+
+<body onload="DrawPuzzleSolver()">
+
+    <canvas id="PuzzleSolver" class="PuzzleContainer">
+        Error: Canvas not supported by browser.
+    </canvas>
+
+    <script type="application/javascript">
+        var squares = [
+            [1, true],
+            [2, true],
+            [3, false],
+            [4, false],
+            [5, true]
+        ];
+
+        function DrawPuzzleSolver() {
+
+            var squareCount = 5;
+
+            // access canvas element by id
+            var canvas = document.getElementById('PuzzleSolver');
+            var squareCount = 5;
+            var squareMargin = 4;
+            var squareSize = canvas.width / squareCount - (squareMargin);
+            if (canvas.getContext) {
+                // get context to use for drawing
+                var ctx = canvas.getContext('2d');
+
+                for (var i = 0; i < squares.length; i++) {
+                    if (squares[i][1]) {
+                        ctx.fillStyle = 'rgb(0, 150, 255)';
+                    } else {
+                        ctx.fillStyle = 'rgb(255, 50, 0)';
+                    }
+                    ctx.fillRect((i * squareSize) + (squareMargin * i + 1), squareSize, squareSize, squareSize);
+                }
+            }
+            CheckSolved();
+        };
+
+        function ShuffleBack() {
+            squares.push(squares.splice(0, 1)[0])
+            console.log('Shuffled back.')
+            DrawPuzzleSolver();
+
+        };
+
+        function InvertMiddle() {
+            for (var i = 1; i <= 3; i++) {
+                squares[i][1] = !squares[i][1];
+            }
+            console.log('Inverted Middle Section.');
+            DrawPuzzleSolver();
+
+        };
+
+        function InvertEven() {
+            squares[1][1] = !squares[1][1];
+            squares[3][1] = !squares[3][1];
+            console.log('Inverted Even.');
+            DrawPuzzleSolver();
+        };
+
+        function ShuffleForward() {
+            squares.unshift(squares.splice(squares.length - 1, 1)[0]);
+            console.log('Shuffle Forward');
+            DrawPuzzleSolver();
+        };
+
+        function CheckSolved() {
+            console.log('Checking Solution.');
+            var solvedCount = 0;
+            for (var i = 0; i < squares.length; i++) {
+                console.log(squares[i][1]);
+                if (squares[i][1]) {
+                    solvedCount++;
+                }
+                console.log(solvedCount);
+            }
+            if (solvedCount == (squares.length)) {
+                console.log('Puzzle Solved.');
+                alert('Puzzle Complete.');
+            }
+        };
+
+    </script>
+    <br />
+    <button onclick="ShuffleBack()">Button One</button>
+    <button onclick="InvertEven()">Button Two</button>
+    <button onclick="InvertMiddle()">Button Three</button>
+    <button onclick="ShuffleForward()">Button Four</button>
+
+</body>
+
+</html>
