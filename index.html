@@ -7,8 +7,29 @@
     <title>Puzzle Solver v1.0</title>
     <style>
         .PuzzleContainer {
-            width: 800;
-            height: 300;
+            width: 98%;
+            height: 50%;
+            padding: 2%;
+            align: center;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        button {
+            height: 200px;
+            width: 20%;
+            margin: 2%;
+            font-size: 60px;
+        }
+
+        .button container {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
     </style>
@@ -304,17 +325,19 @@
 
     </script>
     <br />
-    <button onclick="ShuffleBack()">Button One</button>
-    <button onclick="InvertEven()">Button Two</button>
-    <button onclick="InvertMiddle()">Button Three</button>
-    <button onclick="ShuffleForward()">Button Four</button>
-    <br /><br />
-    <button onclick="Solve()">Solve</button>
-    <button onclick="Reset()">Reset</button>
-    <br /><br />
-    <span>Puzzle Solution: </span><span id="SolutionSequence"></span>
-    <br /><br />
-    <span>Puzzle State: </span><span id="PuzzleState"></span>
+    <div class="buttonContainer">
+        <button onclick="ShuffleBack()">Button One</button>
+        <button onclick="InvertEven()">Button Two</button>
+        <button onclick="InvertMiddle()">Button Three</button>
+        <button onclick="ShuffleForward()">Button Four</button>
+        <br /><br />
+        <button onclick="Solve()">Solve</button>
+        <button onclick="Reset()">Reset</button>
+        <br /><br />
+        <span>Puzzle Solution: </span><span id="SolutionSequence"></span>
+        <br /><br />
+        <span>Puzzle State: </span><span id="PuzzleState"></span>
+    </div>
 </body>
 
 </html>
