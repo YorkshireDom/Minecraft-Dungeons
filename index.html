@@ -9,13 +9,16 @@
     <style>
         .PuzzleContainer {
             width: auto;
-            height: auto;
+            height: 300px;
             padding: 0;
             text-align: center;
         }
 
         body {
             text-align: center;
+            font-variant-caps: all-petite-caps;
+            font-weight: 600;
+            font-family: cursive;
         }
 
         button {
@@ -23,14 +26,19 @@
             width: 18%;
             margin: 10px;
             font-size: auto;
+            font-variant-caps: all-petite-caps;
+            font-weight: 500;
         }
 
-        .button container {
-            width: 50%;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .buttonContainer {
+            // margin-top: -75px;
+            margin-bottom: 100px;
+        }
+
+        .Support {
+            font-variant-caps: all-petite-caps;
+            font-size: 20px;
+            margin-bottom: 50px;
         }
 
     </style>
@@ -47,6 +55,7 @@
         var canvas = document.getElementById('PuzzleSolver');
 
         var clickPuzzleEnabled = true;
+        var puzzleButtons = document.getElementsByClassName('PuzzleButton');
 
         var squares = [];
         var squaresView = [false, false, false, false, false];
@@ -64,19 +73,13 @@
             if (canvas.getContext) {
                 // get context to use for drawing
                 var ctx = canvas.getContext('2d');
-
-                //ctx.clearRect(0, 0, canvas.width, canvas.height);
-
                 for (var i = 0; i < squares.length; i++) {
                     if (squaresView[i]) {
                         ctx.fillStyle = 'rgb(0, 150, 255)';
                     } else {
                         ctx.fillStyle = 'rgb(255, 50, 0)';
                     }
-                    // x y w h 
-                    /*
-                    ctx.fillRect(squares[i]['left'], squares[i]['top'], squares[i]['width'], squares[i]['height']);
-                    */
+                    // x y w h
                     ctx.fillRect(i * 50 + (i * 10), 0, 50, 50);
                 }
             }
@@ -125,7 +128,9 @@
             }
             if (solvedCount == (squares.length)) {
                 console.log('Puzzle Solved.');
-                document.getElementsByClassName('PuzzleButton').forEach(e => e.disabled = true);
+                for (var i = 0; i < puzzleButtons.length; i++) {
+                    puzzleButtons[i].disabled = true;
+                }
                 window.setTimeout(function() {
                     document.getElementById('PuzzleState').innerHTML = 'Solved.';
                 }, 500);
@@ -236,6 +241,10 @@
                     solution = '2, 1, 1, 2'
                     break;
 
+                case '0,1,0,1,1':
+                    solution = '4, 2';
+                    break;
+
                 case '1,0,1,0,1':
                     solution = '2'
                     break;
@@ -334,7 +343,9 @@
 
         function Reset() {
             document.getElementById('SolveButton').disabled = false;
-            document.getElementsByClassName('PuzzleButton').forEach(e => e.disabled = false);
+            for (var i = 0; i < puzzleButtons.length; i++) {
+                puzzleButtons[i].disabled = false;
+            }
             clickPuzzleEnabled = true;
             squares = [];
             squaresView = [false, false, false, false, false];
@@ -382,6 +393,12 @@
         <br /><br />
         <span>Puzzle State: </span><span id="PuzzleState"></span>
     </div>
+
+    <div class="Support">Show Your Support <br /> Subscribe on YouTube</div>
+
+    <script src="https://apis.google.com/js/platform.js"></script>
+
+    <div class="g-ytsubscribe" data-channelid="UCKhaDh5uBFJc5NpcnE3j08A" data-layout="full" data-count="default"></div>
 </body>
 
 </html>
