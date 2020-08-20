@@ -44,6 +44,7 @@
 
         .Outputs {
             font-size: 32px;
+            margin-top: -65px;
         }
 
     </style>
@@ -295,8 +296,8 @@
 
         function Initialize() {
 
-            document.getElementById('SolutionSequence').innerHTML = '-';
-            document.getElementById('PuzzleState').innerHTML = 'Unsolved';
+            // document.getElementById('SolutionSequence').innerHTML = '';
+            // document.getElementById('PuzzleState').innerHTML = 'Unsolved';
 
             squares.push({
                 id: 0,
@@ -395,9 +396,9 @@
         <button onclick="Reset()">Reset</button>
         <div class="Outputs">
             <br /><br />
-            <span>Puzzle Solution: </span><span id="SolutionSequence"></span>
+            <span>Puzzle Solution: <br /></span><span id="SolutionSequence"></span>
             <br />
-            <span>Puzzle State: </span><span id="PuzzleState"></span>
+            <!--<span>Puzzle State: </span><span id="PuzzleState"></span>-->
         </div>
     </div>
 
