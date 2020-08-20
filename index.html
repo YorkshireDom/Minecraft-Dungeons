@@ -125,6 +125,7 @@
             }
             if (solvedCount == (squares.length)) {
                 console.log('Puzzle Solved.');
+                document.getElementsByClassName('PuzzleButton').disabled = true;
                 window.setTimeout(function() {
                     document.getElementById('PuzzleState').innerHTML = 'Solved.';
                 }, 500);
@@ -329,6 +330,7 @@
 
         function Reset() {
             document.getElementById('SolveButton').disabled = false;
+            document.getElementsByClassName('PuzzleButton').disabled = false;
             clickPuzzleEnabled = true;
             squares = [];
             squaresView = [false, false, false, false, false];
@@ -364,10 +366,10 @@
     </script>
     <br />
     <div class="buttonContainer">
-        <button onclick="ShuffleBack()">Button One</button>
-        <button onclick="InvertEven()">Button Two</button>
-        <button onclick="InvertMiddle()">Button Three</button>
-        <button onclick="ShuffleForward()">Button Four</button>
+        <button onclick="ShuffleBack()" class="PuzzleButton">Button One</button>
+        <button onclick="InvertEven()" class="PuzzleButton">Button Two</button>
+        <button onclick="InvertMiddle()" class="PuzzleButton">Button Three</button>
+        <button onclick="ShuffleForward()" class="PuzzleButton">Button Four</button>
         <br /><br />
         <button onclick="Solve(this)" id="SolveButton">Solve</button>
         <button onclick="Reset()">Reset</button>
