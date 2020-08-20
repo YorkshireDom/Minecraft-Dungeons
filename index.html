@@ -125,7 +125,7 @@
             }
             if (solvedCount == (squares.length)) {
                 console.log('Puzzle Solved.');
-                document.getElementsByClassName('PuzzleButton').disabled = true;
+                document.getElementsByClassName('PuzzleButton').forEach(e => e.disabled = true);
                 window.setTimeout(function() {
                     document.getElementById('PuzzleState').innerHTML = 'Solved.';
                 }, 500);
@@ -330,7 +330,7 @@
 
         function Reset() {
             document.getElementById('SolveButton').disabled = false;
-            document.getElementsByClassName('PuzzleButton').disabled = false;
+            document.getElementsByClassName('PuzzleButton').forEach(e => e.disabled = false);
             clickPuzzleEnabled = true;
             squares = [];
             squaresView = [false, false, false, false, false];
