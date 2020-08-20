@@ -12,6 +12,7 @@
             height: auto;
             padding: 0;
             text-align: center;
+            margin-top: 100px;
         }
 
         body {
@@ -136,10 +137,10 @@
                     puzzleButtons[i].disabled = true;
                 }
                 window.setTimeout(function() {
-                    document.getElementById('PuzzleState').innerHTML = 'Solved.';
+                    document.getElementById('PuzzleState').innerHTML = 'Solved';
                 }, 500);
             } else {
-                document.getElementById('PuzzleState').innerHTML = 'Unsolved.';
+                document.getElementById('PuzzleState').innerHTML = 'Unsolved';
             }
         };
 
@@ -295,7 +296,7 @@
         function Initialize() {
 
             document.getElementById('SolutionSequence').innerHTML = '-';
-            document.getElementById('PuzzleState').innerHTML = 'Unsolved.';
+            document.getElementById('PuzzleState').innerHTML = 'Unsolved';
 
             squares.push({
                 id: 0,
