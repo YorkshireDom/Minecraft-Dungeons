@@ -41,6 +41,10 @@
             margin-bottom: 50px;
         }
 
+        .Outputs {
+            font-size: 32px;
+        }
+
     </style>
 </head>
 
@@ -388,10 +392,12 @@
         <br /><br />
         <button onclick="Solve(this)" id="SolveButton">Solve</button>
         <button onclick="Reset()">Reset</button>
-        <br /><br />
-        <span>Puzzle Solution: </span><span id="SolutionSequence"></span>
-        <br /><br />
-        <span>Puzzle State: </span><span id="PuzzleState"></span>
+        <div class="Outputs">
+            <br /><br />
+            <span>Puzzle Solution: </span><span id="SolutionSequence"></span>
+            <br /><br />
+            <span>Puzzle State: </span><span id="PuzzleState"></span>
+        </div>
     </div>
 
     <div class="Support">Show Your Support <br /> Subscribe on YouTube</div>
