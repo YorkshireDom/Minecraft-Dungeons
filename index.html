@@ -74,8 +74,8 @@
         var squareSize = 50;
 
         function DrawPuzzleSolver() {
-            console.log(squaresView);
-            console.log(squares);
+            //console.log(squaresView);
+            //console.log(squares);
 
             if (canvas.getContext) {
                 // get context to use for drawing
@@ -95,7 +95,7 @@
         function ShuffleBack() {
             squares.push(squares.splice(0, 1)[0]);
             squaresView.push(squaresView.splice(0, 1)[0]);
-            console.log('Shuffled back.')
+            //console.log('Shuffled back.')
             DrawPuzzleSolver();
         };
 
@@ -104,7 +104,7 @@
                 squares[i]['selected'] = !squares[i]['selected'];
                 squaresView[i] = !squaresView[i];
             }
-            console.log('Inverted Middle Section.');
+            //console.log('Inverted Middle Section.');
             DrawPuzzleSolver();
         };
 
@@ -113,19 +113,19 @@
             squares[3]['selected'] = !squares[3]['selected'];
             squaresView[1] = !squaresView[1];
             squaresView[3] = !squaresView[3];
-            console.log('Inverted Even.');
+            //console.log('Inverted Even.');
             DrawPuzzleSolver();
         };
 
         function ShuffleForward() {
             squares.unshift(squares.splice(squares.length - 1, 1)[0]);
             squaresView.unshift(squaresView.splice(squaresView.length - 1, 1)[0]);
-            console.log('Shuffle Forward');
+            //console.log('Shuffle Forward');
             DrawPuzzleSolver();
         };
 
         function CheckSolved() {
-            console.log('Checking Solution.');
+            //console.log('Checking Solution.');
             var solvedCount = 0;
             for (var i = 0; i < squares.length; i++) {
                 if (squares[i]['selected']) {
@@ -134,16 +134,16 @@
                 // console.log(solvedCount);
             }
             if (solvedCount == (squares.length)) {
-                console.log('Puzzle Solved.');
+                //console.log('Puzzle Solved.');
                 for (var i = 0; i < puzzleButtons.length; i++) {
                     puzzleButtons[i].disabled = true;
                 }
                 window.setTimeout(function() {
-                    document.getElementById('PuzzleState').innerHTML = 'Solved';
+                    //document.getElementById('PuzzleState').innerHTML = 'Solved';
                     document.getElementById('SolutionSequence').innerHTML = 'Press Reset';
                 }, 500);
             } else {
-                document.getElementById('PuzzleState').innerHTML = 'Unsolved';
+                //document.getElementById('PuzzleState').innerHTML = 'Unsolved';
             }
         };
 
@@ -154,7 +154,7 @@
 
             var solution = '';
             var selectedArray = SelectedArray();
-            console.log('Getting solution for: ' + selectedArray);
+            //console.log('Getting solution for: ' + selectedArray);
 
             switch (selectedArray.toString()) {
 
@@ -265,6 +265,10 @@
                     solution = '1, 2'
                     break;
 
+                case '0,1,1,0,1':
+                    solution = '1, 1, 2'
+                    break;
+
 
                     // --- Four Blocks ---
                 case '1,1,1,1,0':
@@ -307,7 +311,7 @@
 
         function Initialize() {
 
-            // document.getElementById('SolutionSequence').innerHTML = '';
+            document.getElementById('SolutionSequence').innerHTML = '';
             // document.getElementById('PuzzleState').innerHTML = 'Unsolved';
 
             squares.push({
